@@ -36,7 +36,7 @@ public class NomineeController {
 	}	
 	
 	@RequestMapping(value = "/nominee/thanks", method = RequestMethod.GET)
-	public String afterRedirect(@ModelAttribute("member") final Member passedMember) {
+	public String afterRedirect(@ModelAttribute("member") Member passedMember) {
 		return thanksViewName;
 	}
 	
