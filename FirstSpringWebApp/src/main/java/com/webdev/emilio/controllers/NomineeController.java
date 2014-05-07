@@ -31,12 +31,12 @@ public class NomineeController {
 	@RequestMapping(value = "/nominee", method = RequestMethod.POST)
 	public String processForm(Member member, RedirectAttributes redirectAttrs) {
 		logger.info("Processing member: " + member);
-		redirectAttrs.addFlashAttribute("member", member);
+		redirectAttrs.addFlashAttribute("passedMember", member);
 		return "redirect:" + thanksViewName;
 	}	
 	
 	@RequestMapping(value = "/nominee/thanks", method = RequestMethod.GET)
-	public String afterRedirect(@ModelAttribute("member") Member passedMember) {
+	public String afterRedirect(@ModelAttribute("passedMember") Member passedMember) {
 		return thanksViewName;
 	}
 	
