@@ -1,4 +1,8 @@
 <%@ page session="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:url var="homeUrl" value="/" />
+<c:url var="loginUrl" value="/spring_security_login" />
+<c:url var="logoutUrl" value="/j_spring_security_logout" />
 <html>
 <head>
 <title>Home</title>
@@ -13,6 +17,7 @@
 	<div class="container text-center">
 		<h1>Thanks</h1>
 		<p>Thank you for nominating ${passedMember}</p>
+		<a href="${logoutUrl}">Log out</a>
 	</div>
 </body>
 </html>

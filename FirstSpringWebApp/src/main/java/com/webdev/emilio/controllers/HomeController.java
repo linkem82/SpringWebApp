@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "spring_security_login";
+		return "home";
 	}
 	
 }
