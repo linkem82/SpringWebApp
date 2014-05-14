@@ -21,14 +21,14 @@
 				<label for="lastName" class="col-sm-2 col-sm-offset-1 control-label">Last
 					Name:</label>
 				<div class="col-sm-5">
-					<form:input path="firstName" class="form-control" id="lastName" />
+					<form:input path="firstName" class="form-control" id="firstName" />
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="firstName" class="col-sm-2 col-sm-offset-1 control-label">First
 					Name:</label>
 				<div class="col-sm-5">
-					<form:input path="lastName" class="form-control" id="firstName" />
+					<form:input path="lastName" class="form-control" id="lastName" />
 				</div>
 			</div>
 			<div class="form-group">
