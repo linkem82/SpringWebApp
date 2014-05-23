@@ -19,14 +19,14 @@ public class NomineeController {
 	
 	private @Value( "${view_thanks}" )String thanksViewName;
 	
-	public void setThanksViewName(String name) {
-		this.thanksViewName = name;
-	}
+//	public void setThanksViewName(String name) {
+//		this.thanksViewName = name;
+//	}
 	
 	@RequestMapping(value = "/nominee", method = RequestMethod.GET)
 	public Member form() {
 		return new Member();
-	}
+	}	
 	
 	@RequestMapping(value = "/nominee", method = RequestMethod.POST)
 	public String processForm(Member member, RedirectAttributes redirectAttrs) {
