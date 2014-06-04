@@ -9,7 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
+	<context:annotation-config/>
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
@@ -23,8 +23,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	<beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-		p:basename="classpath:messages" />
-	<context:component-scan base-package="com.webdev.emilio" />
+		p:basename="classpath:messages" />	
+	<context:component-scan	base-package="com.webdev.emilio.controllers" />		
+	
 	
 	<context:property-placeholder location = "classpath:/configuration.properties" />		
 </beans:beans>

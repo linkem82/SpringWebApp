@@ -74,7 +74,7 @@
 							E-mail address:</label>
 						<div class="col-sm-5">
 							<form:input path="email" class="form-control" id="email" />
-							<div><form:errors cssClass="form-control alert-danger" path="email" htmlEscape="false"/></div>
+							<div><form:errors cssClass="alert-danger form-control" path="email" htmlEscape="false"/></div>
 						</div>
 					</div>
 					<div class="form-group">

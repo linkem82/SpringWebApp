@@ -45,22 +45,22 @@ public class AccountForm {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	@NotEmpty
+	@Size(min=1, max=50)
 	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	@NotEmpty
+	@Size(min=1, max=50)
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	@NotEmpty
 	@Email
+	@Size(min=1, max=50)
 	public String getEmail() {
 		return email;
 	}
