@@ -13,6 +13,15 @@ public class UserDetailsAdapter implements UserDetails {
 	private Account account;
 	private String password;	
 	
+	public UserDetailsAdapter(Account account) {
+		this.account = account;
+	}
+	
+	@Override
+	public String getUsername() {
+		return account.getUsername();
+	}
+	
 	public Account getAccount() {
 		return account;
 	}
@@ -20,9 +29,30 @@ public class UserDetailsAdapter implements UserDetails {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-
+	
+	@Override
+	public String getPassword() {
+		return password;
+	}
+	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Long getId() {
+		return account.getId();
+	}
+	
+	public String getFirstName() {
+		return account.getFirstName();
+	}
+	
+	public String getLastName() {
+		return account.getLastName();
+	}	
+	
+	public String getEmail() {
+		return account.getEmail();
 	}
 
 	@Override
@@ -32,18 +62,8 @@ public class UserDetailsAdapter implements UserDetails {
 		for(Role role: rolesSet) {
 			authoritiesSet.add(new GrantedAuthorityImpl(role.getName()));
 		}
-		return null;
-	}
-
-	@Override
-	public String getPassword() {
-		return password;
-	}
-
-	@Override
-	public String getUsername() {
-		return account.getUsername();
-	}
+		return authoritiesSet;
+	}		
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -62,7 +82,7 @@ public class UserDetailsAdapter implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return account.isEnabled();
 	}
 
 }

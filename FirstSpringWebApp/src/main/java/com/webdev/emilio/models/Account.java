@@ -1,5 +1,6 @@
 package com.webdev.emilio.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -24,7 +25,7 @@ import javax.validation.constraints.Size;
 @Table(name = "accounts")
 @NamedQuery(name = "findAccountByUserName",
 			query = "select a from Account a where a.username = :username")
-public class Account {
+public class Account implements Serializable {
 	
 	private Long id;
 	private String username;
@@ -113,7 +114,7 @@ public class Account {
 	}
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
-	}
+	}	
 	@Transient
 	public String  getFullName() {
 		return this.firstName + this.lastName;

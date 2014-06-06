@@ -5,6 +5,11 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +32,7 @@ public class FormController {
 	private static final String REG_VIEW = "users/registration";
 	private static final String REG_OK_VIEW = "users/registration_ok";
 	@Inject private AccountService accountService;
+	@Inject @Qualifier("authenticationManager") private AuthenticationManager authManager;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -59,6 +65,10 @@ public class FormController {
 		convertPasswordError(result);
 		Account account = formToAccount(form);
 		this.accountService.registerAccount(account, form.getPassword(), result);
+		/* automatic login after registration */
+		Authentication authRequest = new UsernamePasswordAuthenticationToken(account.getUsername(), form.getPassword());
+		Authentication authResponse = authManager.authenticate(authRequest);
+		SecurityContextHolder.getContext().setAuthentication(authResponse);
 		return result.hasErrors() ? REG_VIEW : REG_OK_VIEW;	
 	}
 	
